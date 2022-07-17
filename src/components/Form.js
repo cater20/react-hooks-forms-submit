@@ -26,6 +26,14 @@ function Form(props) {
       setErrors(["First name is required!"]);
     }
   }
+  const listOfSubmissions = submittedData.map((data, index) => {
+    return (
+      <div key={index}>
+        {data.firstName} {data.lastName}
+      </div>
+    );
+  });
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -33,7 +41,7 @@ function Form(props) {
         <input type="text" onChange={handleLastNameChange} value={lastName} />
         <button type="submit">Submit</button>
       </form>
-      {/* conditionally render error messages */}
+     
       {errors.length > 0
         ? errors.map((error, index) => (
             <p key={index} style={{ color: "red" }}>
